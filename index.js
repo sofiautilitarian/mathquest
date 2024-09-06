@@ -34,10 +34,10 @@ $(document).ready(function () {
         19: "thousandths"
     };
 
-    var audio = new Audio('wrong.mp3'); // Initialize audio
-    var audio1 = new Audio('right.mp3');
-    var originalBackgroundColor = $('body').css('background-color'); // Store original background color
+    // Initialize audio
 
+    var originalBackgroundColor = $('body').css('background-color'); // Store original background color
+    $(".selfformedclass2, .selfformedclass3, .selfformedclass4, .selfformedclass5").click(handleAnswerClick);
 
 
 
@@ -47,27 +47,30 @@ $(document).ready(function () {
         var correctAnswer = correctAnswers[n];
         if (selectedAnswer === correctAnswer) {
             $('body').css('background-color', 'green');
+            var audio1 = new Audio('right.mp3');
             audio1.play();
             count++; // Change background color to green
-            $('.count').text("Your current score is "+count);
+            $('.count').text("Your current score is " + count);
             setTimeout(function () {
                 $('body').css('background-color', originalBackgroundColor); // Revert background color after 2 seconds
                 func3();
                 func1();
                 func2(n);
                 // Reload the page after 2 seconds
-            }, 2000);
-        } else {
-            audio.play(); // Play the wrong answer sound
+            }, 1000);
+        }
+        else {
+            var audio2 = new Audio('wrong.mp3')
+            audio2.play();
             $('body').css('background-color', 'red'); // Change background color to red
             setTimeout(function () {
                 $('body').css('background-color', originalBackgroundColor); // Revert background color after 2 seconds
-            }, 2000);
+            }, 1000);
         }
     }
 
     // Set up click event listeners
-    $(".selfformedclass2, .selfformedclass3, .selfformedclass4, .selfformedclass5").click(handleAnswerClick);
+
 
     // The rest of the code remains the same
     function func2(n) {
